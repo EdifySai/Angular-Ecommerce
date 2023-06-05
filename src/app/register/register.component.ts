@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent {
   email: String = "";
   userId: String = "";
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
 
   }
   register() {
@@ -26,6 +27,9 @@ export class RegisterComponent {
     console.log(user);
     this.userService.registerUser(user).subscribe((response: any) => {
       console.log("response", response);
+      if (response.statusCode == 201) {
+        this.router.navigateByUrl("/dashboard");
+      }
     },
       (error: any) => {
         console.log("error", error);
