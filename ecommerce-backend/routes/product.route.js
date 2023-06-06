@@ -7,3 +7,7 @@ router.delete('/delete/:id', ProductController.delete);
 router.get('/all', ProductController.all);
 router.get('/:id', ProductController.singleProduct);
 module.exports = router;
+
+
+
+// http://localhost:9012/product/add

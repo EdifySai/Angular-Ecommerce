@@ -10,8 +10,8 @@ export class AppComponent {
     console.log("constructor called");
 
     if (localStorage.getItem('isUserLoggedIn') != "true") {
-      document.getElementById("logout").style.display = "none";
-      .
+      // document.getElementById("logout").style.display = "none";
+      // .
     }
   }
 }
