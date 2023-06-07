@@ -13,15 +13,26 @@ export class ProductComponent implements OnInit {
   price: any;
   description: any;
   imageURL: any;
-
+  products: any = [];
   constructor(private productService: ProductService) {
-
 
   }
   ngOnInit() {
     console.log("COmponent loaded");
+    this.getAllProducts();
 
-    // Write the code to make API call to get the list of the products
+  }
+
+  getAllProducts() {
+    this.productService.list().subscribe(
+      (response: any) => {
+        console.log(response);
+        this.products = response;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    )
   }
 
   addProduct() {
@@ -36,6 +47,8 @@ export class ProductComponent implements OnInit {
     console.log(product);
     this.productService.add(product).subscribe((response: any) => {
       console.log(response);
+      this.getAllProducts();
+
     },
 
       (error: any) => {

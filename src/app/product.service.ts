@@ -14,5 +14,9 @@ export class ProductService {
 
   }
 
+  list(){
+    return this.httpClient.get("http://localhost:9012/product/all");
+  }
+
 
 }
